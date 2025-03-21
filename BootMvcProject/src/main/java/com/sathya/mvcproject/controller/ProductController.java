@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.sathya.mvcproject.entity.ProductEntity;
 import com.sathya.mvcproject.product.ProductModel;
 import com.sathya.mvcproject.service.ProductService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class ProductController {
@@ -67,7 +71,10 @@ public class ProductController {
     }
     
     @PostMapping("/product/saveproduct")
-    public String saveProductData(@ModelAttribute ProductModel productModel) {
+    public String saveProductData(@Valid @ModelAttribute("product") ProductModel productModel, BindingResult bindingResult) {
+    	if(bindingResult.hasErrors()) {
+    		return "add-product";
+    	}
         productService.saveProductData(productModel);
         return "success"; 
     }

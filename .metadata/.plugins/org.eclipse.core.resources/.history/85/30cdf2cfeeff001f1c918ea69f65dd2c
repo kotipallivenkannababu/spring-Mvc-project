@@ -1,9 +1,0 @@
-package com.sathya.mvcproject.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.sathya.mvcproject.product.Product;
-@org.springframework.stereotype.Repository
-public interface ProductRepository extends JpaRepository<Product, Long>{
- 
-}

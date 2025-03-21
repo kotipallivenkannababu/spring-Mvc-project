@@ -1,9 +1,0 @@
-spring.application.name=BootMvcProject
-server.port=8082
-
-# H2 Database Configuration
-
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.driver-class-name=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=Nani@1509

@@ -32,7 +32,7 @@ public class ProductService {
         productEntity.setBrand(productModel.getBrand());
         productEntity.setMadeIn(productModel.getMadeIn());
         productEntity.setTaxamount(taxAmount);
-        productEntity.setTotalAmount(totalAmount);
+        productEntity.setTotalAmount(totalAmount+taxAmount);
         productEntity.setCreatedAt(LocalDateTime.now());
         productEntity.setCreatedBy(System.getProperty("user.name"));
 
@@ -72,7 +72,7 @@ public class ProductService {
             double taxAmount = totalAmount * 0.18;
             
             productEntity.setTaxamount(taxAmount);
-            productEntity.setTotalAmount(totalAmount);
+            productEntity.setTotalAmount(totalAmount+taxAmount);
             productEntity.setCreatedAt(LocalDateTime.now());
             productEntity.setCreatedBy(System.getProperty("user.name"));
 
