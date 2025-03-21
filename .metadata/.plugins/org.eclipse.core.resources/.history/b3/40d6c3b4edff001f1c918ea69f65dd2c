@@ -1,0 +1,5 @@
+package com.sathya.mvcproject.product;
+
+public class Product {
+
+}

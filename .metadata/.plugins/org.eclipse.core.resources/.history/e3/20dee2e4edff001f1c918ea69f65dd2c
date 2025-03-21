@@ -1,0 +1,9 @@
+package com.sathya.mvcproject.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.sathya.mvcproject.product.Product;
+
+public interface Repository extends JpaRepository<Product, Long>{
+ 
+}

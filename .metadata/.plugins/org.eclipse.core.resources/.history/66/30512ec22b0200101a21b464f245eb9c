@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .delete-link {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Brand</th>
+            <th>Made In</th>
+            <th>Total Amount</th>
+            <th>Tax Amount</th>
+            <th>Created At</th>
+            <th>Created By</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.brand}"></td>
+            <td th:text="${product.madeIn}"></td>
+            <td th:text="${product.totalAmount}"></td>
+            <td th:text="${product.taxamount}"></td>
+            <td th:text="${product.createdAt}"></td>
+            <td th:text="${product.createdBy}"></td>
+            <td>
+                <!-- Delete hyperlink -->
+                <a th:href="@{'/deleteproduct/' + ${product.id}}" class="delete-link"
+                   onclick="return confirm('Are you sure you want to delete this product?');">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

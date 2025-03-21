@@ -1,0 +1,37 @@
+package com.sathya.mvcproject.service;
+
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sathya.mvcproject.entity.ProductEntity;
+import com.sathya.mvcproject.product.ProductModel;
+import com.sathya.mvcproject.repository.ProductRepository;
+
+@Service
+public class ProductService {
+ @Autowired
+  ProductRepository productRepository;
+
+public void saveProductData(ProductModel productModel) {
+	// TODO Auto-generated method stub
+	double price=productModel.getPrice();
+	double taxAmount=price*18/100;
+	double totalAmount=price+taxAmount;
+	
+	//Read the data from model object set the data to Entity
+	 ProductEntity productEntity=new ProductEntity();
+	 productEntity.setName(productModel.getName());
+	 productEntity.setPrice(productModel.getPrice());
+	 productEntity.setQuantity(productModel.getQuantity());
+	 productEntity.setBrand(productModel.getBrand());
+	 productEntity.setMadeIn(productModel.getMadeIn());
+	 productEntity.setTaxamount(taxAmount);
+	 productEntity.setTotalAmount(totalAmount);
+	 productEntity.setCreatedAt(LocalDateTime.now());
+	 productEntity.setCreatedBy(System.getProperty("user.name"));
+	 
+	 
+}
+}

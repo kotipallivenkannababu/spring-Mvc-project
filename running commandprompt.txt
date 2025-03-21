@@ -1,0 +1,4 @@
+Goto jar file location open command prompt. In address just type   "cmd" click on enter.
+  
+
+command is:D:\SpringMVC example\BootMvcProject\target>java -jar BootMvcProject-0.0.1-SNAPSHOT.jar

@@ -1,0 +1,15 @@
+package com.sathya.mvcproject.controller;
+
+import java.security.Provider.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.sathya.mvcproject.service.ProductService;
+
+@Controller
+public class ProductController
+{
+	@Autowired
+	ProductService productService;
+}

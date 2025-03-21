@@ -1,0 +1,39 @@
+package com.sathya.mvcproject.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.sathya.mvcproject.product.ProductModel;
+import com.sathya.mvcproject.service.ProductService;
+
+@Controller
+public class ProductController {
+
+    @Autowired
+    private ProductService productService;
+
+    @GetMapping("/productform")
+    public String getForm(Model model) {
+        ProductModel product = new ProductModel();
+        product.setMadeIn("India");
+        model.addAttribute("product", product);
+        return "add-product"; 
+    }
+    @GetMapping("/getAllProducts")
+    public String getAllProducts(Model model)
+    {
+    	List<ProductEntity> products=productService.getAllProducts();
+    	model.addAttribute("products",products);
+    	return "product-list";
+    }
+
+    @PostMapping("/product/saveproduct")
+    public String saveProductData(@ModelAttribute ProductModel productModel) {
+        productService.saveProductData(productModel);
+        return "success"; 
+    }
+}

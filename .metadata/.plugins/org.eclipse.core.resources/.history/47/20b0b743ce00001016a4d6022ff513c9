@@ -1,0 +1,32 @@
+package com.sathya.mvcproject.controller;
+
+import java.security.Provider.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner.Mode;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.sathya.mvcproject.product.Product;
+import com.sathya.mvcproject.service.ProductService;
+
+@Controller
+public class ProductController
+{
+	@Autowired
+	ProductService productService;
+	@GetMapping("/productform")
+	public String getform(Model model)
+	{
+		Product product=new Product();
+		product.setName("Laptop");
+		product.setPrice(100);
+		product.setQuantity(5);
+		product.setBrand("Hp");
+		product.setMadeIn("India");
+		model.addAttribute("product", product);
+		return "add-product";
+	}
+	
+}

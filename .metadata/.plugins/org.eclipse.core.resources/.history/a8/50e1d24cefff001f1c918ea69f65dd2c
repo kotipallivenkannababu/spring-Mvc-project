@@ -1,0 +1,12 @@
+package com.sathya.mvcproject.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sathya.mvcproject.repository.ProductRepository;
+
+@Service
+public class ProductService {
+ @Autowired
+  ProductRepository repository;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product Details</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td th:text="${product.id}"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td th:text="${product.name}"></td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td th:text="${product.price}"></td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td th:text="${product.quantity}"></td>
+        </tr>
+        <tr>
+            <th>Brand</th>
+            <td th:text="${product.brand}"></td>
+        </tr>
+        <tr>
+            <th>Made In</th>
+            <td th:text="${product.madeIn}"></td>
+        </tr>
+        <tr>
+            <th>Total Amount</th>
+            <td th:text="${product.totalAmount}"></td>
+        </tr>
+        <tr>
+            <th>Tax Amount</th>
+            <td th:text="${product.taxamount}"></td>
+        </tr>
+        <tr>
+            <th>Created At</th>
+            <td th:text="${product.createdAt}"></td>
+        </tr>
+        <tr>
+            <th>Created By</th>
+            <td th:text="${product.createdBy}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="/products">Back to Products</a>
+
+</body>
+</html>

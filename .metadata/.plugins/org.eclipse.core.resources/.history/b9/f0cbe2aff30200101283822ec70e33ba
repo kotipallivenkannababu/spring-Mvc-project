@@ -1,0 +1,59 @@
+package com.sathya.mvcproject.service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sathya.mvcproject.entity.ProductEntity;
+import com.sathya.mvcproject.product.ProductModel;
+import com.sathya.mvcproject.repository.ProductRepository;
+
+@Service
+public class ProductService {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    public void saveProductData(ProductModel productModel) {
+        double price = productModel.getPrice();
+        double taxAmount = price * 0.18;
+        double totalAmount = price + taxAmount;
+
+        // ✅ Convert ProductModel → ProductEntity
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setName(productModel.getName());
+        productEntity.setPrice(productModel.getPrice());
+        productEntity.setQuantity(productModel.getQuantity());
+        productEntity.setBrand(productModel.getBrand());
+        productEntity.setMadeIn(productModel.getMadeIn());
+        productEntity.setTaxamount(taxAmount);
+        productEntity.setTotalAmount(totalAmount);
+        productEntity.setCreatedAt(LocalDateTime.now());
+        productEntity.setCreatedBy(System.getProperty("user.name"));
+
+        // ✅ Save to Database
+        productRepository.save(productEntity);
+        
+        
+    }
+     
+    public List<ProductEntity> getAllProducts()
+    {
+    	List<ProductEntity> products=productRepository.findAll();
+    	return products;
+    }
+  
+	public ProductEntity getProductById(Long id) {
+		// TODO Auto-generated method stub
+		ProductEntity product=productRepository.findById(id).get();
+    	return product;
+		
+	}
+
+	public void deleteProductById(Long id) {
+		productRepository.deleteById(id);
+		
+	}
+}
